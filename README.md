@@ -2,7 +2,7 @@
 
 tinyworldmap is a world map for offline-first and low-bandwidth web apps.
 
-[Demo]()
+[Demo](https://tinyworldmap.com)
 
 <kbd><img src="images/zoomed-mid.png" /></kbd>
 
