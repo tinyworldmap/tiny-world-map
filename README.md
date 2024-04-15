@@ -1,23 +1,23 @@
 # tinyworldmap
 
-tinyworldmap is a world map for offline-first and low-bandwidth web apps.
+tinyworldmap is a world map designed for offline-first and low-bandwidth web apps.
 
 [Demo]()
 
 <kbd><img src="images/zoomed-out.png" /></kbd>
 <kbd><img src="images/zoomed-mid.png" /></kbd>
 
-tinyworldmap can be used with Leaflet, supports all zoom levels, and the most complete version only takes up 277 kB gzipped.
+tinyworldmap is designed to be used with Leaflet. All zoom levels are supported, and the most complete version occupies only 277 kB when gzipped.
 
-It's rendered client-side, and has been profiled and tested on low-end decade-old phones, introducing no perceptible lag.
+It's rendered client-side and has been extensively profiled and tested on low-end phones dating back a decade, with no discernible lag.
 
-By default, the map includes the names and locations of the 10,000 most populous cities added to OpenStreetMap. At the time of writing, this means that all cities with at least 50,000 inhabitants are displayed:
+By default, the map displays the names and locations of the 10,000 most populous cities sourced from OpenStreetMap. At the time of writing, this encompasses all cities with a population of at least 50,000:
 
 <kbd><img src="images/zoomed-in.png" /></kbd>
 
 ## Usage
 
-There are two ways the map can be used:
+There are two ways to use the map:
 
 1. As a base map, replacing OpenStreetMap tiles
 2. As an offline fallback for OpenStreetMap tiles
@@ -30,7 +30,7 @@ To use tinyworldmap as a Leaflet base map, add the following to your `head` tag:
 <script src="https://tinyworldmap.com/dist/tiny-world-all-10000.js">
 ```
 
-This script embeds all necessary data to display the map.
+This script embeds all the data necessary to display the map.
 
 Then, instead of adding a tile layer to the Leaflet map, use:
 
@@ -38,21 +38,21 @@ Then, instead of adding a tile layer to the Leaflet map, use:
 new L.GridLayer.TinyWorld().addTo(map)
 ```
 
-The `TinyWorld` constructor takes the following options: `backgroundColor`, `textColor`, `borderColor`, `borderFillColor`, `textStrokeColor` (helps separate the text from the rest), `cityFont` (e.g. `"12px Arial"`), `countryFont`, and `dotColor`.
+The `TinyWorld` constructor accepts several options: `backgroundColor`, `textColor`, `borderColor`, `borderFillColor`, `textStrokeColor` (which helps separate the text from the rest), `cityFont` (e.g. `"12px Arial"`), `countryFont`, and `dotColor`.
 
-If `dotColor` is set, every city is marked with a dot. This makes the map usable even when using a stripped-down version of tinyworldmap that doesn't include country borders:
+If `dotColor` is specified, each city is marked with a dot. This enhances usability when using the stripped-down version of tinyworldmap that excludes country borders:
 
 <kbd><img src="images/dotcolor.png" /></kbd>
 
 ### As a fallback map
 
-In offline-first web applications, caching image-based maps at all zoom levels is not possible. Raster maps consist of billions of 256x256 tiles, with a combined size of terabytes.
+In offline-first web applications, caching image-based maps at all zoom levels is impractical due to the vast number of tiles, resulting in terabytes of data.
 
-This repository provides a [service worker](service-worker.js) to make your maps work offline.
+This repository provides a [service worker](service-worker.js) to enable offline functionality for your maps.
 
-The strategy is simple: when the service worker is installed, the fallback map is preloaded and all visited pages are cached, but the base map is not. Cached data is never used while the user can reach the server. When offline, the cached pages are served. Furthermore, the service worker intercepts requests to the OSM tile server, generating replacement tiles locally using tinyworldmap.
+The service worker strategy is straightforward: when the service worker is installed, the fallback map is preloaded and all visited pages are cached. However, the base map is not cached. Cached data is only used when the user is offline. Furthermore, the service worker intercepts requests to the OSM tile server, generating replacement tiles locally using tinyworldmap.
 
-Before using this service worker, alter the sections marked `IMPORTANT`, and [register the service worker](https://web.dev/articles/service-workers-registration). Attribute OpenStreetMap and tinyworldmap in your tile layer:
+Before employing this service worker, modify the sections marked `IMPORTANT`, and [register the service worker](https://web.dev/articles/service-workers-registration). Attribute OpenStreetMap and tinyworldmap in your tile layer as follows:
 
 ```js
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -63,13 +63,13 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 ## Tinier world maps
 
-The complete map is 277K gzipped/694K uncompressed. For some use cases, this is still too big.
+The complete map is 277K gzipped/694K uncompressed. For certain use cases, this might still be too large.
 
 ### No borders
 
-[`tiny-world-noborders-10000.js(on)`](tiny-world-noborders-10000.js) has all data in the complete version except for country borders and shorelines. This shaves off 100k from the gzipped version and 200k from the uncompressed version.
+[`tiny-world-noborders-10000.js(on)`](tiny-world-noborders-10000.js) contains all the data present in the complete version except for country borders and shorelines. This reduces the gzipped version by 100k and the uncompressed version by 200k.
 
-Besides size, the version without borders has the advantage that all data included is precise. The country borders in the complete version are not exact at high zoom levels, which can look weird if you're overlaying shapes that match country borders and shorelines. In that case, using the version without borders often looks better.
+In addition to its smaller size, the version without borders has the advantage that all data included is precise. The country borders in the complete version are not exact at high zoom levels, which can look strange when overlaying shapes that match country borders and shorelines. In such cases, the version without borders often looks better.
 
 This is the default styling:
 
@@ -77,11 +77,11 @@ This is the default styling:
 
 ### No cities
 
-If city labels are not needed, there are two versions called `tiny-world-nocities.js(on)` (which does have country labels) and `tiny-world-borders.js(on)` (which doesn't). The city labels are 410K uncompressed and 172K compressed.
+There are two versions available without city labels: `tiny-world-nocities.js(on)` (which retains country labels) and `tiny-world-borders.js(on)` (which omits country labels). The city labels comprise 410K uncompressed and 172K compressed.
 
-### Less cities
+### Fewer cities
 
-Finally, for every file that does include city labels, there's a version with 2,000 cities, 4,000 cities, and 10,000 cities. Simply replace `10000` by `2000` or `4000` ion the file name.
+Finally, for each file including city labels, there also exist versions featuring 2,000 cities and 4,000 cities. Simply substitute `10000` with `2000` or `4000` in the filename.
 
 Cities included | Population
 --- | ---
@@ -91,11 +91,11 @@ Cities included | Population
 
 ## Hire tinyworldmap
 
-If you require a customized map (getting a more detailed map for part of the world, translation, etc) or if you need help getting your website to work offline, contact us at [business@tinyworldmap.com](mailto:business@tinyworldmap.com).
+If you require a customized map (such as obtaining a more detailed map for a specific region, translation, etc.) or assistance in implementing offline functionality on your website, please contact us at [business@tinyworldmap.com](mailto:business@tinyworldmap.com).
 
 ## Attribution
 
-Like OpenStreetMap data, tinyworldmap data is licensed under the ODBL, which requires attribution. If you follow the steps above, you should have an attribution to both OpenStreetMap and tinyworldmap in your Leaflet footer. If not, add the following:
+Like OpenStreetMap data, tinyworldmap data is licensed under the ODBL, which necessitates attribution. If you've followed the steps outlined above, your Leaflet footer should include attribution to both OpenStreetMap and tinyworldmap. If not, add the following:
 
 ```html
 &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, <a href="http://www.tinyworldmap.com">tinyworldmap</a>
