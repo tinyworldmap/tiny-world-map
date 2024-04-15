@@ -6,7 +6,7 @@ tinyworldmap is a world map designed for offline-first and low-bandwidth web app
 
 <kbd><img src="images/zoomed-mid.png" /></kbd>
 
-tinyworldmap is designed to be used with Leaflet. All zoom levels are supported, and the most complete version occupies only 277 kB when gzipped.
+tinyworldmap is designed to be used with Leaflet. All zoom levels are supported, and the most complete version is only 277 kB gzipped.
 
 It's rendered client-side and has been extensively profiled and tested on low-end phones dating back a decade, with no discernible lag.
 
