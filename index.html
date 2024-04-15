@@ -29,7 +29,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_0b97dcf88b49247ec38544fa92a7984c {
+                #map_69732e382f277093800a6e30a14401e7 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -40,33 +40,138 @@
             </style>
         
     <script src="dist/tiny-world-all-10000.js"></script>
+    <style>
+     html {
+    font-size: 12px;
+}
+.leaflet-control-attribution {
+    font-size: 11px;
+}
+.horizontal-button {
+    padding: 5px 10px;
+    background: #fff !important;
+    white-space: nowrap;
+    /* clear: none !important; */
+}
+.horizontal-button a {
+    width: auto !important;
+}
+.topbar {
+    pointer-events: none;
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    font-size: 25px;
+    bottom: 2%;
+    padding: 20px;
+    z-index: 2002;
+}
+.topbar span {
+    background: rgba(255,255,255,1);
+    display: inline-block;
+    margin-bottom: 5px;
+    padding: 3px;
+    border: 1px solid black;
+}
+.topbar a {
+    pointer-events: auto;
+}
+span.about {
+    margin-bottom: 1%;
+}
+/* horizontal-button:not(:first-child) { */
+/*     clear: none! important; */
+/* } */
+
+@media only screen and (max-width: 700px) {
+    .topbar {
+        font-size: 1em !important;
+    }
+    .topbar button {
+        font-size: 12px !important;
+    }
+}
+
+    </style>
 </head>
 <body>
     
     
-            <div class="folium-map" id="map_0b97dcf88b49247ec38544fa92a7984c" ></div>
+            <div class="folium-map" id="map_69732e382f277093800a6e30a14401e7" ></div>
         
+    <div class="topbar">
+        <span class="about">
+            tinyworldmap is a world map for offline-first and low-bandwidth web apps. You're free to <a href=" https://github.com/tinyworldmap/tiny-world-map/blob/gh-pages/README.md">use it</a>.
+        </span>
+        <span>
+            If you require a customized map (e.g. more detail or in another language) or if you need help getting your website to work offline, <a href="mailto:business@tinyworldmap.com?body=Hi Bob,">contact us</a>.
+        </span>
+    </div>
     <script>
      
     
-            var map_0b97dcf88b49247ec38544fa92a7984c = L.map(
-                "map_0b97dcf88b49247ec38544fa92a7984c",
+            var map_69732e382f277093800a6e30a14401e7 = L.map(
+                "map_69732e382f277093800a6e30a14401e7",
                 {
                     center: [20.0, 0.0],
                     crs: L.CRS.EPSG3857,
                     zoom: 3,
-                    zoomControl: true,
+                    zoomControl: false,
                     preferCanvas: true,
                     worldCopyJump: true,
                 }
             );
-            L.control.scale().addTo(map_0b97dcf88b49247ec38544fa92a7984c);
+            L.control.scale().addTo(map_69732e382f277093800a6e30a14401e7);
 
             
 
         
     </script>
     <script>
-     ; new L.GridLayer.TinyWorld().addTo(window[document.querySelector(".folium-map").id])
+     var $$ = function (e) { return document.querySelector(e) }
+
+let map = window[$$(".folium-map").id]
+new L.GridLayer.TinyWorld().addTo(map)
+
+var ContactButton = L.Control.extend({
+    options: {
+        position: 'topleft'
+    },
+    onAdd: function (map) {
+        var controlDiv = L.DomUtil.create('div', 'leaflet-bar horizontal-button plan-route');
+        // var container1 = L.DomUtil.create('a', '', controlDiv);
+        // container1.href = "mai" + ("r", "lto:info@tinywo") + ("a", "rldmap.com?body=Hi Bob,");
+        // container1.innerHTML = "💬️️ Contact us";
+        var container2 = L.DomUtil.create('a', '', controlDiv);
+        container2.href = "https://github.com/tinyworldmap/tiny-world-map/blob/gh-pages/README.md";
+        container2.innerHTML = "📚️ Documentation";
+        var container3 = L.DomUtil.create('a', '', controlDiv);
+        container3.href = "mai" + ("r", "lto:business@tinywo") + ("a", "rldmap.com?body=Hi Bob,");
+        container3.innerHTML = "✉️️ Business inquiries";
+
+        return controlDiv;
+    }
+});
+
+var AboutUs = L.Control.extend({
+    options: {
+        position: 'bottomleft'
+    },
+    onAdd: function (map) {
+        var controlDiv = L.DomUtil.create('div', 'leaflet-bar horizontal-button plan-route');
+        let about = $$('p.about')
+        controlDiv.appendChild(about)
+        return controlDiv;
+    }
+});
+
+// map.addControl(new DocsButton());
+// map.addControl(new ContactButton());
+// map.addControl(new AboutUs());
+
+// L.control.zoom({
+//     position: 'topright'
+// }).addTo(map);
+
     </script>
 </body>

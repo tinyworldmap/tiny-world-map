@@ -88,7 +88,7 @@ Cities included | Population
 
 ## Hire tinyworldmap
 
-If you require a customized map (getting a more detailed map for part of the world, translation, etc) or if you need help getting your website to work offline, contact us at info at tinyworldmap.com .
+If you require a customized map (getting a more detailed map for part of the world, translation, etc) or if you need help getting your website to work offline, contact us at [business@tinyworldmap.com](mailto:business@tinyworldmap.com).
 
 ## Attribution
 
