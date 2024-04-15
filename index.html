@@ -29,7 +29,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_05b6097be61187e71ddcc9c9f983c2a0 {
+                #map_9385c7fa5e6a00e5c1770c503131edba {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -39,10 +39,11 @@
                 .leaflet-container { font-size: 1rem; }
             </style>
         
-    <script src="dist/tiny-world-noborders-10000.js"></script>
+    <script src="dist/tiny-world-all-10000.js"></script>
     <style>
      html {
     font-size: 12px;
+    font-family: Ubuntu, "Segoe UI", "Lucida Grande";
 }
 .leaflet-control-attribution {
     font-size: 11px;
@@ -61,7 +62,7 @@
     text-align: center;
     position: absolute;
     width: 100%;
-    font-size: 25px;
+    font-size: 22px;
     bottom: 2%;
     padding: 20px;
     z-index: 2002;
@@ -70,8 +71,8 @@
     background: rgba(255,255,255,1);
     display: inline-block;
     margin-bottom: 5px;
-    padding: 3px;
-    border: 1px solid black;
+    padding: 3px 5px;
+    box-shadow: 0 0 4px rgba(0,0,0,.9);}
 }
 .topbar a {
     pointer-events: auto;
@@ -97,21 +98,21 @@ span.about {
 <body>
     
     
-            <div class="folium-map" id="map_05b6097be61187e71ddcc9c9f983c2a0" ></div>
+            <div class="folium-map" id="map_9385c7fa5e6a00e5c1770c503131edba" ></div>
         
     <div class="topbar">
         <span class="about">
             tinyworldmap is a world map for offline-first and low-bandwidth web apps. You're free to <a href=" https://github.com/tinyworldmap/tiny-world-map/blob/gh-pages/README.md">use it</a>.
         </span>
         <span>
-            If you require a customized map (e.g. more detail or in another language) or if you need help getting your website to work offline, please <a href="mailto:business@tinyworldmap.com?body=Hi Bob,">contact us</a>.
+            If you require a customized map (e.g. in more detail or in another language) or if you need help getting your website to work offline, please <a href="mailto:business@tinyworldmap.com?body=Hi Bob,">contact us</a>.
         </span>
     </div>
     <script>
      
     
-            var map_05b6097be61187e71ddcc9c9f983c2a0 = L.map(
-                "map_05b6097be61187e71ddcc9c9f983c2a0",
+            var map_9385c7fa5e6a00e5c1770c503131edba = L.map(
+                "map_9385c7fa5e6a00e5c1770c503131edba",
                 {
                     center: [20.0, 0.0],
                     crs: L.CRS.EPSG3857,
@@ -121,14 +122,18 @@ span.about {
                     worldCopyJump: true,
                 }
             );
-            L.control.scale().addTo(map_05b6097be61187e71ddcc9c9f983c2a0);
+            L.control.scale().addTo(map_9385c7fa5e6a00e5c1770c503131edba);
 
             
 
         
     </script>
     <script>
-     var $$ = function (e) { return document.querySelector(e) }
+     if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("/service-worker.js").catch(e => console.error(e));
+}
+
+var $$ = function (e) { return document.querySelector(e) }
 
 let map = window[$$(".folium-map").id]
 new L.GridLayer.TinyWorld().addTo(map)

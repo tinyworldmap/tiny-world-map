@@ -10,7 +10,7 @@ tinyworldmap is designed to be used with Leaflet. All zoom levels are supported,
 
 It's rendered client-side and has been extensively profiled and tested on low-end phones dating back a decade, with no discernible lag.
 
-By default, the map displays the names and locations of the 10,000 most populous cities and towns sourced from OpenStreetMap. At the time of writing, this encompasses all cities with a population of at least 50,000:
+By default, the map displays the names and locations of the 10,000 most populous cities sourced from OpenStreetMap. At the time of writing, this encompasses all cities and towns with a population of at least 50,000:
 
 <kbd><img src="images/zoomed-in-2.png" /></kbd>
 
@@ -47,9 +47,9 @@ If `dotColor` is specified, each city is marked with a dot. This enhances usabil
 
 In offline-first web applications, caching image-based maps at all zoom levels is impractical due to the vast number of tiles, resulting in terabytes of data.
 
-This repository provides a [service worker](service-worker.js) to enable offline functionality for your maps.
+This repository provides a [service worker](service-worker.js) to enable offline functionality for web apps with maps.
 
-The service worker strategy is straightforward: when the service worker is installed, the fallback map is preloaded and all visited pages are cached. However, the base map is not cached. Cached data is only used when the user is offline. Furthermore, the service worker intercepts requests to the OSM tile server, generating replacement tiles locally using tinyworldmap.
+When this service worker is installed, the fallback map is preloaded and all visited pages are cached. However, the base map is not cached. Cached data is only used when the user is offline. Furthermore, the service worker intercepts requests to the OSM tile server, generating replacement tiles locally using tinyworldmap.
 
 Before employing this service worker, modify the sections marked `IMPORTANT`, and [register the service worker](https://web.dev/articles/service-workers-registration). Attribute OpenStreetMap and tinyworldmap in your tile layer as follows:
 

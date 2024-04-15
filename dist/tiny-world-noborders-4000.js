@@ -4,81 +4,82 @@
 
     // The rest of this file is licensed under the MIT license
     function drawPlaces(tile, coords, places, opts) {
-        var ctx = tile.getContext('2d');
+    var ctx = tile.getContext('2d');
 
-        if (!places.path2ds)
-            places.path2ds = places.paths.map(p => [new Path2D(p[0]), p[1]])
+    if (!places.path2ds)
+        places.path2ds = places.paths.map(p => [new Path2D(p[0]), p[1]])
 
-        let vwidth = 800, vheight = 800
+    let vwidth = 800, vheight = 800
 
-        var size = {x: tile.width, y: tile.height};
-        let margin1 = 2/size.x, margin2 = 35/size.x, margin3 = 50/size.x, N = Math.pow(2, coords.z);
+    var size = {x: tile.width, y: tile.height};
+    let margin1 = 2/size.x, margin2 = 35/size.x, margin3 = 50/size.x, N = Math.pow(2, coords.z);
 
-        let lbound = coords.x / N, rbound = lbound + 1/N, tbound = coords.y / N, bbound = tbound + 1/N
+    let lbound = coords.x / N, rbound = lbound + 1/N, tbound = coords.y / N, bbound = tbound + 1/N
 
-        ctx.fillStyle = opts.backgroundColor || (places.path2ds.length ? "#aad3df" : 'white')
-        ctx.fillRect(0, 0, size.x, size.y)
+    ctx.fillStyle = opts.backgroundColor || (places.path2ds.length ? "#aad3df" : 'white')
+    ctx.fillRect(0, 0, size.x, size.y)
 
-        ctx.translate(-size.x*coords.x, -size.x*coords.y)
-        ctx.scale(size.x*N/vwidth,size.y*N/vheight)
-        ctx.strokeStyle = opts.borderColor || 'black'
-        ctx.fillStyle = opts.borderFillColor || 'white'
-        ctx.lineWidth = 2/N
+    ctx.translate(-size.x*coords.x, -size.x*coords.y)
+    ctx.scale(size.x*N/vwidth,size.y*N/vheight)
+    ctx.strokeStyle = opts.borderColor || 'black'
+    ctx.fillStyle = opts.borderFillColor || 'white'
+    ctx.lineWidth = 2/N
 
-        for (let [p, bounds] of places.path2ds) {
-            if (!(bounds[0] > rbound || bounds[2] < lbound || bounds[1] > bbound || bounds[3] < tbound)) {
-                ctx.fill(p)
-                ctx.stroke(p)
-            }
+    for (let [p, bounds] of places.path2ds) {
+        if (!(bounds[0] > rbound || bounds[2] < lbound || bounds[1] > bbound || bounds[3] < tbound)) {
+            ctx.fill(p)
+            ctx.stroke(p)
         }
-
-        ctx.resetTransform()
-
-        let dotColor = opts.dotColor || (places.path2ds.length ? "transparent" : "red")
-        ctx.fillStyle = dotColor
-
-        if (dotColor != 'transparent')
-            for (let [yc, xc, name, zoom] of places.cities) {
-                let y = yc * N - coords.y, x = xc * N - coords.x
-                if (y > -margin1 && y < 1+margin1 && x > -margin1 && x < 1+margin1) {
-                    let xS = size.x * x, yS = size.y * y
-                    ctx.fillRect(xS-1,yS-1,2,2)
-                }
-            }
-
-        ctx.strokeStyle = opts.textStrokeColor || 'rgba(255,255,255,.9)'
-        ctx.lineWidth = 4
-        ctx.textAlign = 'center'
-        ctx.fillStyle = opts.textColor || "black";
-        ctx.font = opts.cityFont || '12px Arial, Helvetica, Ubuntu, sans-serif'
-        ctx.lineJoin = 'round'
-
-        for (let [yc, xc, name, zoom] of places.cities) {
-            if (zoom > coords.z) continue
-
-            let y = yc * N - coords.y, x = xc * N - coords.x
-            if (y > -margin2 && y < 1+margin2 && x > -margin2 && x < 1+margin2) {
-                let xS = size.x * x, yS = size.y * y
-                ctx.strokeText(name, xS, yS, 70)
-                ctx.fillText(name, xS, yS, 70)
-            }
-        }
-
-        ctx.font = opts.countryFont || 'bold 14px Arial, Helvetica, Ubuntu, sans-serif'
-
-        for (let [yc, xc, name, zoom] of places.countries) {
-            if (zoom > coords.z || coords.z > 8) continue
-
-            let y = yc * N - coords.y, x = xc * N - coords.x
-            if (y > -margin3 && y < 1+margin3 && x > -margin3 && x < 1+margin3) {
-                let xS = size.x * x, yS = size.y * y
-                ctx.strokeText(name, xS, yS, 100)
-                ctx.fillText(name, xS, yS, 100)
-            }
-        }
-
-        return tile;
     }
+
+    ctx.resetTransform()
+
+    let dotColor = opts.dotColor || (places.path2ds.length ? "transparent" : "red")
+    ctx.fillStyle = dotColor
+
+    if (dotColor != 'transparent')
+        for (let [yc, xc, name, zoom] of places.cities) {
+            let y = yc * N - coords.y, x = xc * N - coords.x
+            if (y > -margin1 && y < 1+margin1 && x > -margin1 && x < 1+margin1) {
+                let xS = size.x * x, yS = size.y * y
+                ctx.fillRect(xS-1,yS-1,2,2)
+            }
+        }
+
+    ctx.strokeStyle = opts.textStrokeColor || 'rgba(255,255,255,.9)'
+    ctx.lineWidth = 4
+    ctx.textAlign = 'center'
+    ctx.fillStyle = opts.textColor || "black";
+    ctx.font = opts.cityFont || '12px Arial, Helvetica, Ubuntu, sans-serif'
+    ctx.lineJoin = 'round'
+
+    for (let [yc, xc, name, zoom] of places.cities) {
+        if (zoom > coords.z) continue
+
+        let y = yc * N - coords.y, x = xc * N - coords.x
+        if (y > -margin2 && y < 1+margin2 && x > -margin2 && x < 1+margin2) {
+            let xS = size.x * x, yS = size.y * y
+            ctx.strokeText(name, xS, yS, 70)
+            ctx.fillText(name, xS, yS, 70)
+        }
+    }
+
+    ctx.font = opts.countryFont || 'bold 14px Arial, Helvetica, Ubuntu, sans-serif'
+
+    for (let [yc, xc, name, zoom] of places.countries) {
+        if (zoom > coords.z || coords.z > 8) continue
+
+        let y = yc * N - coords.y, x = xc * N - coords.x
+        if (y > -margin3 && y < 1+margin3 && x > -margin3 && x < 1+margin3) {
+            let xS = size.x * x, yS = size.y * y
+            ctx.strokeText(name, xS, yS, 100)
+            ctx.fillText(name, xS, yS, 100)
+        }
+    }
+
+    return tile;
+}
+
 
     L.GridLayer.TinyWorld = L.GridLayer.extend({
         createTile: function(xyz){

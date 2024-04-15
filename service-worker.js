@@ -1,7 +1,8 @@
 // Choose a cache name
 const cacheName = 'sw-v1';
 // IMPORTANT: List the files to precache
-const precacheResources = ['/', '/tiny-world-map.json'];
+const TWM = 'https://tinyworldmap.com/dist/tiny-world-all-10000.json';
+const precacheResources = ['/', TWM];
 // IMPORTANT: Alter the regex and tile size if you use non-standard tiles
 const REGEXP = /tile\.openstreetmap\.org\/(?<z>\d+)\/(?<x>\d+)\/(?<y>\d+)/
 const TILESIZE = 256
@@ -17,6 +18,9 @@ self.addEventListener('install', (event) => {
 function drawPlaces(tile, coords, places, opts) {
     var ctx = tile.getContext('2d');
 
+    if (!places.path2ds)
+        places.path2ds = places.paths.map(p => [new Path2D(p[0]), p[1]])
+
     let vwidth = 800, vheight = 800
 
     var size = {x: tile.width, y: tile.height};
@@ -24,7 +28,7 @@ function drawPlaces(tile, coords, places, opts) {
 
     let lbound = coords.x / N, rbound = lbound + 1/N, tbound = coords.y / N, bbound = tbound + 1/N
 
-    ctx.fillStyle = opts.backgroundColor || (path2ds.length ? "#aad3df" : 'white')
+    ctx.fillStyle = opts.backgroundColor || (places.path2ds.length ? "#aad3df" : 'white')
     ctx.fillRect(0, 0, size.x, size.y)
 
     ctx.translate(-size.x*coords.x, -size.x*coords.y)
@@ -33,7 +37,7 @@ function drawPlaces(tile, coords, places, opts) {
     ctx.fillStyle = opts.borderFillColor || 'white'
     ctx.lineWidth = 2/N
 
-    for (let [p, bounds] of path2ds) {
+    for (let [p, bounds] of places.path2ds) {
         if (!(bounds[0] > rbound || bounds[2] < lbound || bounds[1] > bbound || bounds[3] < tbound)) {
             ctx.fill(p)
             ctx.stroke(p)
@@ -42,7 +46,7 @@ function drawPlaces(tile, coords, places, opts) {
 
     ctx.resetTransform()
 
-    let dotColor = opts.dotColor || (path2ds.length ? "transparent" : "red")
+    let dotColor = opts.dotColor || (places.path2ds.length ? "transparent" : "red")
     ctx.fillStyle = dotColor
 
     if (dotColor != 'transparent')
@@ -50,7 +54,7 @@ function drawPlaces(tile, coords, places, opts) {
             let y = yc * N - coords.y, x = xc * N - coords.x
             if (y > -margin1 && y < 1+margin1 && x > -margin1 && x < 1+margin1) {
                 let xS = size.x * x, yS = size.y * y
-                ctx.fillRect(xS-0,yS-0,1,1)
+                ctx.fillRect(xS-1,yS-1,2,2)
             }
         }
 
