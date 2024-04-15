@@ -66,7 +66,7 @@ The complete map is 277K gzipped/694K uncompressed. For certain use cases, this 
 
 ### No borders
 
-[`tiny-world-noborders-10000.js(on)`](tiny-world-noborders-10000.js) contains all the data present in the complete version except for country borders and shorelines. This reduces the gzipped version by 100k and the uncompressed version by 200k.
+[`tiny-world-noborders-10000.js(on)`](dist/tiny-world-noborders-10000.js) contains all the data present in the complete version except for country borders and shorelines. This reduces the gzipped version by 100k and the uncompressed version by 200k.
 
 In addition to its smaller size, the version without borders has the advantage that all data included is precise. The country borders in the complete version are not exact at high zoom levels, which can look strange when overlaying shapes that match country borders and shorelines. In such cases, the version without borders often looks better.
 
