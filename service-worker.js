@@ -106,7 +106,7 @@ async function handleTileRequest(request, match) {
     // If the network is unavailable, create a replacement tile locally
     catch(e) {
         try {
-            places = places || await (await cache.match('/tiny-world-map.json')).json()
+            places = places || await (await cache.match(TWM)).json()
             const canvas = new OffscreenCanvas(TILESIZE, TILESIZE)
             let coords = {x: +match.groups.x, y: +match.groups.y, z: +match.groups.z}
 
