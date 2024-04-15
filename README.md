@@ -51,7 +51,7 @@ This repository [provides](service-worker.js) a service worker to enable offline
 
 When this service worker is installed, the fallback map is preloaded. All visited pages are cached, but the base map is excluded. While the server can be reached, cached data is not used. When the user is offline, the website is served from cache, and the service worker intercepts requests to the OSM tile server, generating replacement tiles locally using tinyworldmap.
 
-Before [registering the service worker](https://web.dev/articles/service-workers-registration), modify all sections in the service worker marked `IMPORTANT`. Be sure to attribute OpenStreetMap and tinyworldmap in your tile layer as follows:
+Before [registering the service worker](https://web.dev/articles/service-workers-registration), first modify all sections in the service worker marked `IMPORTANT`, and be sure to attribute OpenStreetMap and tinyworldmap in your tile layer as follows:
 
 ```js
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
