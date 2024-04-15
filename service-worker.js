@@ -142,7 +142,7 @@ self.addEventListener('fetch', (event) => {
             // Go to the network first
             return fetch(event.request).then((fetchedResponse) => {
                 // IMPORTANT: Tell the service worker what not to cache
-                if (!['image', 'video', 'audio'].contains(event.request.destination))
+                if (!['image', 'video', 'audio'].includes(event.request.destination))
                     // Cache response
                     cache.put(event.request, fetchedResponse.clone());
 
