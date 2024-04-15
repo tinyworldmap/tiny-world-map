@@ -1,16 +1,19 @@
 # tinyworldmap
 
-<kbd><img src="images/zoomed-out.png" /></kbd>
-<kbd><img src="images/zoomed-mid.png" /></kbd>
-<kbd><img src="images/zoomed-in.png" /></kbd>
+tinyworldmap is a world map for offline-first and low-bandwidth web apps.
 
 [Demo]()
 
-tinyworldmap is a world map for offline-first and low-bandwidth web apps. It's rendered client-side, and has been tested on low-end decade-old phones.
+<kbd><img src="images/zoomed-out.png" /></kbd>
+<kbd><img src="images/zoomed-mid.png" /></kbd>
 
-It can be used with Leaflet, supports all zoom levels, and the most complete version only takes up 277 kB gzipped.
+tinyworldmap can be used with Leaflet, supports all zoom levels, and the most complete version only takes up 277 kB gzipped.
 
-The map includes the names and locations of the 10,000 most populous cities added to OpenStreetMap. At the time of writing, this means that all cities with at least 50,000 inhabitants are displayed.
+It's rendered client-side, and has been profiled and tested on low-end decade-old phones, introducing no perceptible lag.
+
+By default, the map includes the names and locations of the 10,000 most populous cities added to OpenStreetMap. At the time of writing, this means that all cities with at least 50,000 inhabitants are displayed:
+
+<kbd><img src="images/zoomed-in.png" /></kbd>
 
 ## Usage
 
@@ -43,7 +46,7 @@ If `dotColor` is set, every city is marked with a dot. This makes the map usable
 
 ### As a fallback map
 
-In offline-first web applications, caching a map can prove to be challenging. Raster base maps consist of billions of 256x256 tiles, with a combined size of terabytes.
+In offline-first web applications, caching image-based maps at all zoom levels is not possible. Raster maps consist of billions of 256x256 tiles, with a combined size of terabytes.
 
 This repository provides a [service worker](service-worker.js) to make your maps work offline.
 
@@ -92,7 +95,7 @@ If you require a customized map (getting a more detailed map for part of the wor
 
 ## Attribution
 
-Like OpenStreetMap data, tinyworldmap data is licensed under the ODBL, which requires attribution. If you follow the steps above, you should have an attribution to both OpenStreetMap and tinyworldmap in your Leaflet footer. If not, add this:
+Like OpenStreetMap data, tinyworldmap data is licensed under the ODBL, which requires attribution. If you follow the steps above, you should have an attribution to both OpenStreetMap and tinyworldmap in your Leaflet footer. If not, add the following:
 
 ```html
 &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, <a href="http://www.tinyworldmap.com">tinyworldmap</a>
