@@ -8,9 +8,9 @@ tinyworldmap is a world map designed for offline-first and low-bandwidth web app
 
 tinyworldmap is designed to be used with Leaflet. All zoom levels are supported, and the most complete version is only 277 kB gzipped.
 
-Its client-side rendering has been extensively profiled and tested on low-end phones dating back a decade, with no discernible lag.
+Its client-side rendering has been extensively profiled and tested on low-end decade-old phones, with no discernible lag.
 
-By default, the map displays the names and locations of the 10,000 most populous cities sourced from OpenStreetMap. At the time of writing, this encompasses all cities and towns with a population of at least 50,000:
+By default, the map displays the names and locations of the 10,000 most populous cities that were added to OpenStreetMap. At the time of writing, this encompasses all cities and towns with a population of at least 50,000:
 
 <kbd><img src="images/zoomed-in-2.png" /></kbd>
 
@@ -29,7 +29,7 @@ To use tinyworldmap as a Leaflet base map, add the following to your `head` tag:
 <script src="https://tinyworldmap.com/dist/tiny-world-all-10000.js">
 ```
 
-This script embeds all the data necessary to display the map.
+This script embeds all data necessary to display the map.
 
 Then, instead of adding a tile layer to the Leaflet map, use:
 
@@ -45,13 +45,13 @@ If `dotColor` is specified, each city is marked with a dot. This enhances usabil
 
 ### As a fallback map
 
-In offline-first web applications, caching image-based maps at all zoom levels is impractical due to the vast number of tiles, resulting in terabytes of data.
+In offline-first web applications, caching image-based maps at all zoom levels is impossible due to the vast number of tiles, the combined size often reaching terabytes.
 
 This repository provides a [service worker](service-worker.js) to enable offline functionality for web apps with maps.
 
-When this service worker is installed, the fallback map is preloaded and all visited pages are cached. However, the base map is not cached. Cached data is only used when the user is offline. Furthermore, the service worker intercepts requests to the OSM tile server, generating replacement tiles locally using tinyworldmap.
+When this service worker is installed, the fallback map is preloaded. All visited pages are cached, but the base map is excluded. While the server can be reached, cached data is not used. When the user is offline, the website is served from cache, and the service worker intercepts requests to the OSM tile server, generating replacement tiles locally using tinyworldmap.
 
-Before employing this service worker, modify the sections marked `IMPORTANT`, and [register the service worker](https://web.dev/articles/service-workers-registration). Attribute OpenStreetMap and tinyworldmap in your tile layer as follows:
+Before using this service worker, modify the sections marked `IMPORTANT`, and [register the service worker](https://web.dev/articles/service-workers-registration). Be sure to attribute OpenStreetMap and tinyworldmap in your tile layer as follows:
 
 ```js
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
