@@ -47,11 +47,11 @@ If `dotColor` is specified, each city is marked with a dot. This enhances usabil
 
 In offline-first web applications, caching image-based maps at all zoom levels is impossible due to the vast number of tiles, with a combined size often in the order of terabytes.
 
-This repository provides a [service worker](service-worker.js) to enable offline functionality for web apps with maps.
+This repository [provides](service-worker.js) a service worker to enable offline functionality for web apps with maps.
 
 When this service worker is installed, the fallback map is preloaded. All visited pages are cached, but the base map is excluded. While the server can be reached, cached data is not used. When the user is offline, the website is served from cache, and the service worker intercepts requests to the OSM tile server, generating replacement tiles locally using tinyworldmap.
 
-Before using this service worker, modify the sections marked `IMPORTANT`, and [register the service worker](https://web.dev/articles/service-workers-registration). Be sure to attribute OpenStreetMap and tinyworldmap in your tile layer as follows:
+Before [registering the service worker](https://web.dev/articles/service-workers-registration), modify all sections in the service worker marked `IMPORTANT`. Be sure to attribute OpenStreetMap and tinyworldmap in your tile layer as follows:
 
 ```js
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
