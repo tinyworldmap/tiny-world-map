@@ -10,7 +10,7 @@ tinyworldmap is designed to be used with Leaflet. All zoom levels are supported,
 
 Its client-side rendering has been extensively profiled and tested on low-end decade-old phones, with no discernible lag.
 
-By default, the map displays the names and locations of the 10,000 most populous cities that were added to OpenStreetMap. At the time of writing, this encompasses all cities and towns with a population of at least 50,000:
+By default, the map displays the names and locations of the 10,000 most populous cities that were added to OpenStreetMap. At the time of writing, this encompasses all cities and towns with a population of at least 50,000.
 
 <kbd><img src="images/zoomed-in-2.png" /></kbd>
 
@@ -45,7 +45,7 @@ If `dotColor` is specified, each city is marked with a dot. This enhances usabil
 
 ### As a fallback map
 
-In offline-first web applications, caching image-based maps at all zoom levels is impossible due to the vast number of tiles, the combined size often reaching terabytes.
+In offline-first web applications, caching image-based maps at all zoom levels is impossible due to the vast number of tiles, with a combined size often in the order of terabytes.
 
 This repository provides a [service worker](service-worker.js) to enable offline functionality for web apps with maps.
 
@@ -90,7 +90,7 @@ Cities included | Population
 
 ## Hire tinyworldmap
 
-If you require a customized map (such as obtaining a more detailed map for a specific region, translation, etc.) or assistance in implementing offline functionality on your website, please contact us at [business@tinyworldmap.com](mailto:business@tinyworldmap.com).
+If you require a customized map (such as obtaining a more detailed map for a specific region, translation, etc.) or assistance in implementing offline functionality on your website, please contact us at [business@tinyworldmap.com](mailto:business@tinyworldmap.com?body=Hi%20Bob,).
 
 ## Attribution
 
