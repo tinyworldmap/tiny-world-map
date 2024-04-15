@@ -90,7 +90,7 @@ Cities included | Population
 
 ## Hire tinyworldmap
 
-If you require a customized map (such as obtaining a more detailed map for a specific region, translation, etc.) or assistance in implementing offline functionality on your website, please contact us at [business@tinyworldmap.com](mailto:business@tinyworldmap.com?body=Hi%20Bob,).
+If you require a customized map (e.g. in more detail or in another language) or if you need assistance implementing offline functionality on your website, please contact us at [business@tinyworldmap.com](mailto:business@tinyworldmap.com?body=Hi%20Bob,).
 
 ## Attribution
 
