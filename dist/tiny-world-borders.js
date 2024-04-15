@@ -42,7 +42,7 @@
                 let y = yc * N - coords.y, x = xc * N - coords.x
                 if (y > -margin1 && y < 1+margin1 && x > -margin1 && x < 1+margin1) {
                     let xS = size.x * x, yS = size.y * y
-                    ctx.fillRect(xS-0,yS-0,1,1)
+                    ctx.fillRect(xS-1,yS-1,2,2)
                 }
             }
 
@@ -91,7 +91,7 @@
             return drawPlaces(tile, xyz, places, this.options)
         },
         getAttribution: function() {
-            return '&copy; <a href="https://openstreetmap.org">tinyworldmap</a>, <a href="https://openstreetmap.org">OpenStreetMap</a>'
+            return '&copy; <a href="https://tinyworldmap.com">tinyworldmap</a>, <a href="https://openstreetmap.org">OpenStreetMap</a>'
         }
     });
 })()

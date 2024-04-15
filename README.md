@@ -4,16 +4,15 @@ tinyworldmap is a world map designed for offline-first and low-bandwidth web app
 
 [Demo]()
 
-<kbd><img src="images/zoomed-out.png" /></kbd>
 <kbd><img src="images/zoomed-mid.png" /></kbd>
 
 tinyworldmap is designed to be used with Leaflet. All zoom levels are supported, and the most complete version occupies only 277 kB when gzipped.
 
 It's rendered client-side and has been extensively profiled and tested on low-end phones dating back a decade, with no discernible lag.
 
-By default, the map displays the names and locations of the 10,000 most populous cities sourced from OpenStreetMap. At the time of writing, this encompasses all cities with a population of at least 50,000:
+By default, the map displays the names and locations of the 10,000 most populous cities and towns sourced from OpenStreetMap. At the time of writing, this encompasses all cities with a population of at least 50,000:
 
-<kbd><img src="images/zoomed-in.png" /></kbd>
+<kbd><img src="images/zoomed-in-2.png" /></kbd>
 
 ## Usage
 
@@ -42,7 +41,7 @@ The `TinyWorld` constructor accepts several options: `backgroundColor`, `textCol
 
 If `dotColor` is specified, each city is marked with a dot. This enhances usability when using the stripped-down version of tinyworldmap that excludes country borders:
 
-<kbd><img src="images/dotcolor.png" /></kbd>
+<kbd><img src="images/noborders.png" /></kbd>
 
 ### As a fallback map
 
@@ -73,7 +72,7 @@ In addition to its smaller size, the version without borders has the advantage t
 
 This is the default styling:
 
-<kbd><img src="images/dotcolor.png" /></kbd>
+<kbd><img src="images/noborders.png" /></kbd>
 
 ### No cities
 
