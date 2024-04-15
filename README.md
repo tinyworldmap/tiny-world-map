@@ -1,6 +1,6 @@
 # tinyworldmap
 
-tinyworldmap is a world map designed for offline-first and low-bandwidth web apps.
+tinyworldmap is a world map for offline-first and low-bandwidth web apps.
 
 [Demo]()
 
