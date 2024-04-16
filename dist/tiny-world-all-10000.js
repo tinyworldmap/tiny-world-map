@@ -33,6 +33,8 @@
             ctx.fill(p)
             ctx.stroke(p)
         }
+        if (p == places.path2ds[2][0])
+            break
     }
 
     ctx.resetTransform()
