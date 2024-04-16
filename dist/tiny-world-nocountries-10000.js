@@ -23,7 +23,7 @@
     ctx.scale(size.x*N/vwidth,size.y*N/vheight)
     ctx.strokeStyle = opts.borderColor || '#b4a6ae'
     ctx.fillStyle = opts.borderFillColor || '#fdf9f1'
-    ctx.lineWidth = 2/N
+    ctx.lineWidth = (opts.borderWidth||4)/N
 
     for (let [p, bounds] of places.path2ds) {
         if (!(bounds[0] > rbound || bounds[2] < lbound || bounds[1] > bbound || bounds[3] < tbound)) {
@@ -49,7 +49,7 @@
         }
 
     ctx.strokeStyle = opts.textStrokeColor || 'rgba(255,255,255,.8)'
-    ctx.lineWidth = opts.strokeWidth || 3
+    ctx.lineWidth = opts.textStrokeWidth || 3
     ctx.textAlign = 'center'
     ctx.fillStyle = opts.textColor || "black";
     ctx.font = opts.cityFont || '12px Arial, Helvetica, Ubuntu, sans-serif'
