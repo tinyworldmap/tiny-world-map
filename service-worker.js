@@ -46,13 +46,15 @@ function drawPlaces(tile, coords, places, opts) {
 
     ctx.resetTransform()
 
-    let dotColor = opts.dotColor || (places.path2ds.length ? "transparent" : "red")
+    let dotColor = opts.dotColor || "red"
     ctx.fillStyle = dotColor
 
-    if (dotColor != 'transparent')
+    let minZoom = opts.dotMinZoom || (places.path2ds.length ? 999 : -1)
+
+    if (dotColor != 'transparent' && coords.z >= minZoom)
         for (let [yc, xc, name, zoom] of places.cities) {
             let y = yc * N - coords.y, x = xc * N - coords.x
-            if (y > -margin1 && y < 1+margin1 && x > -margin1 && x < 1+margin1) {
+            if (zoom > coords.z && y > -margin1 && y < 1+margin1 && x > -margin1 && x < 1+margin1) {
                 let xS = size.x * x, yS = size.y * y
                 ctx.fillRect(xS-1,yS-1,2,2)
             }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <title>tinyworldmap - a world map for offline-first and low-bandwidth web apps</title>
+    <title>Tiny world map - a Leaflet map for offline and low-bandwidth web apps</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%22100%22>🌍</text></svg>">
     <link rel="manifest" href="/manifest.json">
 
@@ -29,7 +29,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_621b764e2d8d465e415239b9f892359e {
+                #map_b6a948e4d3f50f8d2371993e5daf2906 {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -98,7 +98,7 @@ span.about {
 <body>
     
     
-            <div class="folium-map" id="map_621b764e2d8d465e415239b9f892359e" ></div>
+            <div class="folium-map" id="map_b6a948e4d3f50f8d2371993e5daf2906" ></div>
         
     <div class="topbar">
         <span class="about">
@@ -111,8 +111,8 @@ span.about {
     <script>
      
     
-            var map_621b764e2d8d465e415239b9f892359e = L.map(
-                "map_621b764e2d8d465e415239b9f892359e",
+            var map_b6a948e4d3f50f8d2371993e5daf2906 = L.map(
+                "map_b6a948e4d3f50f8d2371993e5daf2906",
                 {
                     center: [20.0, 0.0],
                     crs: L.CRS.EPSG3857,
@@ -122,7 +122,7 @@ span.about {
                     worldCopyJump: true,
                 }
             );
-            L.control.scale().addTo(map_621b764e2d8d465e415239b9f892359e);
+            L.control.scale().addTo(map_b6a948e4d3f50f8d2371993e5daf2906);
 
             
 
@@ -137,46 +137,6 @@ var $$ = function (e) { return document.querySelector(e) }
 
 let map = window[$$(".folium-map").id]
 new L.GridLayer.TinyWorld().addTo(map)
-
-var ContactButton = L.Control.extend({
-    options: {
-        position: 'topleft'
-    },
-    onAdd: function (map) {
-        var controlDiv = L.DomUtil.create('div', 'leaflet-bar horizontal-button plan-route');
-        // var container1 = L.DomUtil.create('a', '', controlDiv);
-        // container1.href = "mai" + ("r", "lto:info@tinywo") + ("a", "rldmap.com?body=Hi Bob,");
-        // container1.innerHTML = "💬️️ Contact us";
-        var container2 = L.DomUtil.create('a', '', controlDiv);
-        container2.href = "https://github.com/tinyworldmap/tiny-world-map/blob/gh-pages/README.md";
-        container2.innerHTML = "📚️ Documentation";
-        var container3 = L.DomUtil.create('a', '', controlDiv);
-        container3.href = "mai" + ("r", "lto:business@tinywo") + ("a", "rldmap.com?body=Hi Bob,");
-        container3.innerHTML = "✉️️ Business inquiries";
-
-        return controlDiv;
-    }
-});
-
-var AboutUs = L.Control.extend({
-    options: {
-        position: 'bottomleft'
-    },
-    onAdd: function (map) {
-        var controlDiv = L.DomUtil.create('div', 'leaflet-bar horizontal-button plan-route');
-        let about = $$('p.about')
-        controlDiv.appendChild(about)
-        return controlDiv;
-    }
-});
-
-// map.addControl(new DocsButton());
-// map.addControl(new ContactButton());
-// map.addControl(new AboutUs());
-
-// L.control.zoom({
-//     position: 'topright'
-// }).addTo(map);
 
     </script>
 </body>
