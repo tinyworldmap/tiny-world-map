@@ -4,7 +4,7 @@
 
     // The rest of this file is licensed under the MIT license
     function drawPlaces(tile, coords, places, opts) {
-    var ctx = tile.getContext('2d');
+    var ctx = tile.getContext('2d', {alpha: false});
 
     if (!places.path2ds)
         places.path2ds = places.paths.map(p => [new Path2D(p[0]), p[1]])
