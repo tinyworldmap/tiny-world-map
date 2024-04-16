@@ -54,7 +54,7 @@
     ctx.lineJoin = 'round'
 
     for (let [yc, xc, name, zoom] of places.cities) {
-        if (zoom > coords.z - 1) continue
+        if (zoom > coords.z) continue
 
         let y = yc * N - coords.y, x = xc * N - coords.x
         if (y > -margin2 && y < 1+margin2 && x > -margin2 && x < 1+margin2) {
