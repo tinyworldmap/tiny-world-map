@@ -28,14 +28,16 @@
     ctx.lineWidth = (opts.borderWidth||4)/N
     ctx.lineJoin = 'round'
 
-    for (let [p, bounds] of places.path2ds) {
+    let pathsToDraw = new Path2D()
+
+    for (let [p, bounds] of places.path2ds) { // 60-100 fails
         if (!(bounds[0] > rbound || bounds[2] < lbound || bounds[1] > bbound || bounds[3] < tbound)) {
-            ctx.fill(p)
-            ctx.stroke(p)
+            pathsToDraw.addPath(p)
         }
-        // if (p == places.path2ds[2][0])
-        //     break
     }
+
+    ctx.fill(pathsToDraw)
+    ctx.stroke(pathsToDraw)
 
     ctx.resetTransform()
 
@@ -83,6 +85,8 @@
         }
     }
     _ctx.drawImage(tile2, 0, 0);
+    tile2.classList.remove('leaflet-tile')
+    // document.querySelector('body > canvas').replaceWith(tile2)
     return tile;
 }
 
@@ -90,7 +94,7 @@
     L.GridLayer.TinyWorld = L.GridLayer.extend({
         createTile: function(xyz){
             // create a <canvas> element for drawing
-            var tile = L.DomUtil.create('canvas', 'leaflet-tile');
+            let tile = L.DomUtil.create('canvas', 'leaflet-tile');
 
             tile.width = 256;
             tile.height = 256;

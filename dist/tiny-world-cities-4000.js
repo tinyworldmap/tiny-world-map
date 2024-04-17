@@ -4,7 +4,9 @@
 
     // The rest of this file is licensed under the MIT license
     function drawPlaces(tile, coords, places, opts) {
-    var ctx = tile.getContext('2d');
+    var _ctx = tile.getContext('2d', {alpha: false});
+
+    let tile2 = tile.cloneNode(), ctx = tile2.getContext('2d', {alpha: false});
 
     if (!places.path2ds)
         places.path2ds = places.paths.map(p => [new Path2D(p[0]), p[1]])
@@ -24,13 +26,18 @@
     ctx.strokeStyle = opts.borderColor || '#b4a6ae'
     ctx.fillStyle = opts.borderFillColor || '#fdf9f1'
     ctx.lineWidth = (opts.borderWidth||4)/N
+    ctx.lineJoin = 'round'
 
-    for (let [p, bounds] of places.path2ds) {
+    let pathsToDraw = new Path2D()
+
+    for (let [p, bounds] of places.path2ds) { // 60-100 fails
         if (!(bounds[0] > rbound || bounds[2] < lbound || bounds[1] > bbound || bounds[3] < tbound)) {
-            ctx.fill(p)
-            ctx.stroke(p)
+            pathsToDraw.addPath(p)
         }
     }
+
+    ctx.fill(pathsToDraw)
+    ctx.stroke(pathsToDraw)
 
     ctx.resetTransform()
 
@@ -53,7 +60,6 @@
     ctx.textAlign = 'center'
     ctx.fillStyle = opts.textColor || "black";
     ctx.font = opts.cityFont || '12px Arial, Helvetica, Ubuntu, sans-serif'
-    ctx.lineJoin = 'round'
 
     for (let [yc, xc, name, zoom] of places.cities) {
         if (zoom > coords.z) continue
@@ -78,7 +84,9 @@
             ctx.fillText(name, xS, yS, 100)
         }
     }
-
+    _ctx.drawImage(tile2, 0, 0);
+    tile2.classList.remove('leaflet-tile')
+    // document.querySelector('body > canvas').replaceWith(tile2)
     return tile;
 }
 
@@ -86,7 +94,7 @@
     L.GridLayer.TinyWorld = L.GridLayer.extend({
         createTile: function(xyz){
             // create a <canvas> element for drawing
-            var tile = L.DomUtil.create('canvas', 'leaflet-tile');
+            let tile = L.DomUtil.create('canvas', 'leaflet-tile');
 
             tile.width = 256;
             tile.height = 256;
