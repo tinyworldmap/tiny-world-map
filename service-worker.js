@@ -48,8 +48,10 @@ function drawPlaces(tile, coords, places, opts) {
         }
     }
 
-    ctx.fill(pathsToDraw)
-    ctx.stroke(pathsToDraw)
+    if (opts.borderFillColor != 'transparent')
+        ctx.fill(pathsToDraw)
+    if (opts.borderStrokeColor != 'transparent')
+        ctx.stroke(pathsToDraw)
 
     ctx.resetTransform()
 
