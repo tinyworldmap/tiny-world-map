@@ -24,7 +24,7 @@ There are two ways to use the map:
 To use tinyworldmap as a Leaflet base map, add the following to your `head` tag:
 
 ```html
-<script src="https://tinyworldmap.com/dist/tiny-world-all-10000.js">
+<script src="https://v1.tinyworldmap.com/dist/tiny-world-all-10000.js">
 ```
 
 This script embeds all data necessary to display the map.
