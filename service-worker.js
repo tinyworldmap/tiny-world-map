@@ -16,9 +16,9 @@ self.addEventListener('install', (event) => {
 });
 
 function drawPlaces(tile, coords, places, opts) {
-    var _ctx = tile.getContext('2d', {alpha: false});
+    var ctx = tile.getContext('2d', {alpha: false});
 
-    let tile2 = tile.cloneNode(), ctx = tile2.getContext('2d', {alpha: false});
+    // let tile2 = tile.cloneNode(), ctx = tile2.getContext('2d', {alpha: false});
 
     if (!places.path2ds)
         places.path2ds = places.paths.map(p => [new Path2D(p[0]), p[1]])
@@ -55,12 +55,10 @@ function drawPlaces(tile, coords, places, opts) {
 
     ctx.resetTransform()
 
-    let dotColor = opts.dotColor || "red"
+    let dotColor = opts.dotColor || (places.path2ds.length ? 'transparent' : 'red')
     ctx.fillStyle = dotColor
 
-    let minZoom = opts.dotMinZoom || (places.path2ds.length ? 999 : -1)
-
-    if (dotColor != 'transparent' && coords.z >= minZoom)
+    if (dotColor != 'transparent')
         for (let [yc, xc, name, zoom] of places.cities) {
             let y = yc * N - coords.y, x = xc * N - coords.x
             if (zoom > coords.z && y > -margin1 && y < 1+margin1 && x > -margin1 && x < 1+margin1) {
@@ -72,7 +70,7 @@ function drawPlaces(tile, coords, places, opts) {
     ctx.strokeStyle = opts.textStrokeColor || 'rgba(255,255,255,.8)'
     ctx.lineWidth = opts.textStrokeWidth || 3
     ctx.textAlign = 'center'
-    ctx.fillStyle = opts.textColor || "black";
+    ctx.fillStyle = opts.textFillColor || "black";
     ctx.font = opts.cityFont || '12px Arial, Helvetica, Ubuntu, sans-serif'
 
     for (let [yc, xc, name, zoom] of places.cities) {
@@ -98,8 +96,8 @@ function drawPlaces(tile, coords, places, opts) {
             ctx.fillText(name, xS, yS, 100)
         }
     }
-    _ctx.drawImage(tile2, 0, 0);
-    tile2.classList.remove('leaflet-tile')
+    // _ctx.drawImage(tile2, 0, 0);
+    // tile2.classList.remove('leaflet-tile')
     // document.querySelector('body > canvas').replaceWith(tile2)
     return tile;
 }

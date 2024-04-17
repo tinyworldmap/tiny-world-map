@@ -35,7 +35,7 @@ Then, instead of adding a tile layer to the Leaflet map, use:
 new L.GridLayer.TinyWorld().addTo(map)
 ```
 
-The `TinyWorld` constructor accepts several options: `backgroundColor`, `textFillColor`, `borderStrokeColor`, `borderFillColor`, `borderWidth`, `textStrokeColor` (which helps separate the text from the rest), `cityFont` (e.g. `"12px Arial"`), `countryFont`, and `dotColor`.
+The `TinyWorld` constructor accepts several options: `backgroundColor`, `textFillColor`, `borderStrokeColor`, `borderFillColor`, `borderWidth`, `textStrokeColor` (which helps separate the text from the rest), `textStrokeWidth`, `cityFont` (e.g. `"12px Arial"`), `countryFont`, and `dotColor`.
 
 If `dotColor` is specified, each city is marked with a dot. This enhances usability when using the stripped-down version of tinyworldmap that excludes country borders:
 
