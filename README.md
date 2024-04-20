@@ -6,7 +6,7 @@ tinyworldmap is a world map for offline-first and low-bandwidth web apps.
 
 <kbd><img src="images/zoomed-mid.png" /></kbd>
 
-tinyworldmap is designed to be used with Leaflet. All zoom levels are supported, and the most complete version is only 277 kB gzipped. Its client-side rendering has been extensively profiled and tested on low-end decade-old phones, with no discernible lag.
+tinyworldmap is designed to be used with Leaflet. All zoom levels are supported, and the most complete version is only 300 kB gzipped. Its client-side rendering has been extensively profiled and tested on low-end decade-old phones, with no discernible lag.
 
 By default, the map displays the 10,000 most populous cities added to OpenStreetMap. At the time of writing, this encompasses all cities and towns with a population of at least 48,000:
 
@@ -58,9 +58,11 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 ```
 
+A working 
+
 ## Tinier world maps
 
-The complete map is 277K gzipped/694K uncompressed. For certain use cases, this might still be too large.
+The complete map is 300K gzipped/694K uncompressed. For certain use cases, this might still be too large.
 
 ### No borders
 

@@ -18,8 +18,6 @@ self.addEventListener('install', (event) => {
 function drawPlaces(tile, coords, places, opts) {
     var ctx = tile.getContext('2d', {alpha: false});
 
-    // let tile2 = tile.cloneNode(), ctx = tile2.getContext('2d', {alpha: false});
-
     if (!places.path2ds)
         places.path2ds = places.paths.map(p => [new Path2D(p[0]), p[1]])
 
@@ -96,9 +94,6 @@ function drawPlaces(tile, coords, places, opts) {
             ctx.fillText(name, xS, yS, 100)
         }
     }
-    // _ctx.drawImage(tile2, 0, 0);
-    // tile2.classList.remove('leaflet-tile')
-    // document.querySelector('body > canvas').replaceWith(tile2)
     return tile;
 }
 
