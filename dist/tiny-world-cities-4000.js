@@ -64,6 +64,7 @@
 
         let y = yc * N - coords.y, x = xc * N - coords.x
         if (y > -margin2 && y < 1+margin2 && x > -margin2 && x < 1+margin2) {
+
             let xS = size.x * x, yS = size.y * y
             ctx.strokeText(name, xS, yS, 70)
             ctx.fillText(name, xS, yS, 70)
@@ -91,8 +92,9 @@
             // create a <canvas> element for drawing
             let tile = L.DomUtil.create('canvas', 'leaflet-tile');
 
-            tile.width = 256;
-            tile.height = 256;
+            var tileSize = this.getTileSize();
+            tile.setAttribute('width', tileSize.x);
+            tile.setAttribute('height', tileSize.y);
 
             return drawPlaces(tile, xyz, places, this.options)
         },
