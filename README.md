@@ -58,7 +58,7 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 ```
 
-To see an example of a production application using tinyworldmap as a fallback, visit [Hitchmap](https://hitchmap.com). Simply load the website in a browser supporting service workers, wait for a while, turn off your internet, and reload. The web app should be functioning as normal, using the fallback map.
+To see an example of a production application using tinyworldmap as a fallback, visit [Hitchmap](https://hitchmap.com). Simply load the website in a browser supporting service workers, wait for a while, turn off your internet, and reload. The web app should be functioning as normal, using the fallback map. Note that it might take a while for the service worker to install.
 
 ## Tinier world maps
 

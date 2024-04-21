@@ -29,7 +29,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_15472ba7252617200c1b958e7d3c87b2 {
+                #map_34c471f934c58efa074043f3be0defad {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -112,7 +112,7 @@ span.about {
 <body>
     
     
-            <div class="folium-map" id="map_15472ba7252617200c1b958e7d3c87b2" ></div>
+            <div class="folium-map" id="map_34c471f934c58efa074043f3be0defad" ></div>
         
     <div class="topbar">
         <span class="about">
@@ -125,8 +125,8 @@ span.about {
     <script>
      
     
-            var map_15472ba7252617200c1b958e7d3c87b2 = L.map(
-                "map_15472ba7252617200c1b958e7d3c87b2",
+            var map_34c471f934c58efa074043f3be0defad = L.map(
+                "map_34c471f934c58efa074043f3be0defad",
                 {
                     center: [40.0, 15.0],
                     crs: L.CRS.EPSG3857,
@@ -136,7 +136,7 @@ span.about {
                     worldCopyJump: true,
                 }
             );
-            L.control.scale().addTo(map_15472ba7252617200c1b958e7d3c87b2);
+            L.control.scale().addTo(map_34c471f934c58efa074043f3be0defad);
 
             
 
@@ -150,7 +150,7 @@ span.about {
 var $$ = function (e) { return document.querySelector(e) }
 
 let map = window[$$(".folium-map").id]
-new L.GridLayer.TinyWorld().addTo(map)
+new L.GridLayer.TinyWorld({tileSize: 256}).addTo(map)
 
     </script>
 </body>
