@@ -21,6 +21,9 @@ function drawPlaces(tile, coords, places, opts) {
     if (!places.path2ds)
         places.path2ds = places.paths.map(p => [new Path2D(p[0]), p[1]])
 
+    if (!places.lakepath2ds)
+        places.lakepath2ds = places.lakes.map(p => [new Path2D(p[0]), p[1]])
+
     let vwidth = 800, vheight = 800
 
     var size = {x: tile.width, y: tile.height};
@@ -50,6 +53,21 @@ function drawPlaces(tile, coords, places, opts) {
         ctx.fill(pathsToDraw)
     if (opts.borderStrokeColor != 'transparent')
         ctx.stroke(pathsToDraw)
+
+    ctx.fillStyle = opts.backgroundColor || '#aad3df'
+
+    let lakePathsToDraw = new Path2D()
+
+    for (let [p, bounds] of places.lakepath2ds) { // 60-100 fails
+        if (!(bounds[0] > rbound || bounds[2] < lbound || bounds[1] > bbound || bounds[3] < tbound)) {
+            lakePathsToDraw.addPath(p)
+        }
+    }
+
+    if (opts.backgroundColor != 'transparent')
+        ctx.fill(lakePathsToDraw)
+    if (opts.borderStrokeColor != 'transparent')
+        ctx.stroke(lakePathsToDraw)
 
     ctx.resetTransform()
 
