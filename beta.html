@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <title>Tiny world map - a Leaflet map for offline and low-bandwidth web apps</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%22100%22>🌍</text></svg>">
+    <!-- <link rel="manifest" href="/manifest.json"> -->
+
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_eb853b180c0e1b649a39a6d1ff6b4f9f {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="dist/beta/tiny-world-all-10000.js"></script>
+    <style>
+     html {
+    font-size: 12px;
+    font-family: Ubuntu, "Segoe UI", "Lucida Grande", sans-serif;
+}
+.leaflet-control-attribution {
+    font-size: 11px;
+}
+.horizontal-button {
+    padding: 5px 10px;
+    background: #fff !important;
+    white-space: nowrap;
+    /* clear: none !important; */
+}
+.horizontal-button a {
+    width: auto !important;
+}
+.topbar {
+    pointer-events: none;
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    font-size: 22px;
+    bottom: 2%;
+    padding: 25px;
+    z-index: 2002;
+}
+.topbar span {
+    background: rgba(255,255,255,1);
+    display: inline-block;
+    margin-bottom: 5px;
+    padding: 3px 5px;
+    box-shadow: 0 0 4px rgba(0,0,0,.9);
+}
+.topbar a {
+    pointer-events: auto;
+}
+span.about {
+    margin-bottom: 18px;
+    top: 0px;
+}
+/* horizontal-button:not(:first-child) { */
+/*     clear: none! important; */
+/* } */
+
+@media only screen and (max-width: 700px) {
+    .topbar {
+        font-size: 1em !important;
+        top: 0;
+    }
+    .topbar button {
+        font-size: 12px !important;
+    }
+    .topbar span {
+        position: absolute;
+        bottom: 0;
+        margin: 40px 20px;
+        left: 0px;
+        padding: 8px;
+    }
+    span.about {
+        top: 0;
+        margin-top: 20px;
+        bottom: auto;
+    }
+}
+
+    </style>
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_eb853b180c0e1b649a39a6d1ff6b4f9f" ></div>
+        
+    <div class="topbar">
+        <span class="about">
+            tinyworldmap is an ODBL-licensed map for offline-first and low-bandwidth web apps. You're free to <a href=" https://github.com/tinyworldmap/tiny-world-map/blob/gh-pages/README.md">use it</a>.
+        </span>
+        <span>
+            If you require a custom map (e.g. in more detail or in another language) or if you need assistance implementing offline functionality, please <a href="mailto:business@tinyworldmap.com?body=Hi Bob,">contact us</a>.
+        </span>
+    </div>
+    <script>
+     
+    
+            var map_eb853b180c0e1b649a39a6d1ff6b4f9f = L.map(
+                "map_eb853b180c0e1b649a39a6d1ff6b4f9f",
+                {
+                    center: [40.0, 15.0],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 3,
+                    zoomControl: false,
+                    preferCanvas: true,
+                    worldCopyJump: true,
+                }
+            );
+            L.control.scale().addTo(map_eb853b180c0e1b649a39a6d1ff6b4f9f);
+
+            
+
+        
+    </script>
+    <script>
+     if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("/service-worker.js").catch(e => console.error(e));
+}
+
+var $$ = function (e) { return document.querySelector(e) }
+
+let map = window[$$(".folium-map").id]
+new L.GridLayer.TinyWorld({tileSize: 256}).addTo(map)
+
+    </script>
+</body>
