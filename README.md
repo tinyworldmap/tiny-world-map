@@ -2,7 +2,7 @@
 
 tinyworldmap is a world map for offline-first and low-bandwidth web apps.
 
-[Demo](https://tinyworldmap.com)
+[Demo](https://tinyworldmap.com) [Beta](https://tinyworldmap.com/beta.html)
 
 <kbd><img src="images/zoomed-mid.png" /></kbd>
 
@@ -40,6 +40,12 @@ The `TinyWorld` constructor accepts several options: `backgroundColor`, `textFil
 If `dotColor` is specified, each city is marked with a dot. This enhances usability when using the stripped-down version of tinyworldmap that excludes country borders:
 
 <kbd><img src="images/noborders.png" /></kbd>
+
+To use the version currently in development (which is heavier and has not been tested on all old phones):
+
+```html
+<script src="https://tinyworldmap.com/dist/beta/tiny-world-all-10000.js">
+```
 
 ### As a fallback map
 
