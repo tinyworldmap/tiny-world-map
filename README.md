@@ -41,7 +41,7 @@ If `dotColor` is specified, each city is marked with a dot. This enhances usabil
 
 <kbd><img src="images/noborders.png" /></kbd>
 
-Apart from the stable base map, the version currently in development (which is heavier and has not been tested on all old phones) is also available:
+The version currently in development is also available:
 
 ```html
 <script src="https://tinyworldmap.com/dist/beta/tiny-world-all-10000.js">
