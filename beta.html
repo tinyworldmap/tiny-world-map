@@ -150,7 +150,7 @@ span.about {
 var $$ = function (e) { return document.querySelector(e) }
 
 let map = window[$$(".folium-map").id]
-new L.GridLayer.TinyWorld({tileSize: 256}).addTo(map)
+new L.GridLayer.TinyWorld({tileSize: 256, maxZoom: 18}).addTo(map)
 
     </script>
 </body>
