@@ -6,7 +6,7 @@ tinyworldmap is a world map for offline-first and low-bandwidth web apps.
 
 <kbd><img src="images/zoomed-mid.png" /></kbd>
 
-tinyworldmap is designed to be used with Leaflet. All zoom levels are supported, and the most complete version is only 300 kB gzipped. Its client-side rendering has been extensively profiled and tested on low-end decade-old phones, with no discernible lag.
+tinyworldmap is designed to be used with Leaflet. All zoom levels are supported, and the most complete version is only 450 kB gzipped. Its client-side rendering has been extensively profiled and tested on low-end decade-old phones, with no discernible lag.
 
 By default, the map displays the 10,000 most populous cities added to OpenStreetMap. At the time of writing, this encompasses all cities and towns with a population of at least 48,000:
 
@@ -24,7 +24,7 @@ There are two ways to use the map:
 To use tinyworldmap as a Leaflet base map, add the following to your `head` tag:
 
 ```html
-<script src="https://tinyworldmap.com/dist/tiny-world-all-10000.js">
+<script src="https://tinyworldmap.com/dist/v2/tiny-world-all-10000.js">
 ```
 
 This script embeds all data necessary to display the map.
@@ -68,11 +68,11 @@ To see an example of a production application using tinyworldmap as a fallback, 
 
 ## Tinier world maps
 
-The complete map is 300K gzipped/694K uncompressed. For certain use cases, this might still be too large.
+The complete map is 450K gzipped/1.1M uncompressed. For certain use cases, this might still be too large.
 
 ### No borders
 
-[`tiny-world-noborders-10000.js(on)`](dist/tiny-world-noborders-10000.js) contains all the data present in the complete version except for country borders and shorelines. This reduces the gzipped version by 100k and the uncompressed version by 200k.
+[`tiny-world-noborders-10000.js(on)`](dist/tiny-world-noborders-10000.js) contains all the data present in the complete version except for country borders and shorelines. This reduces the gzipped version by 300k and the uncompressed version by 825k.
 
 In addition to its smaller size, the version without borders has the advantage that all data included is precise. The country borders in the complete version are not exact at high zoom levels, which can look strange when overlaying shapes that match country borders and shorelines. In such cases, the version without borders often looks better.
 
