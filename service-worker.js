@@ -76,6 +76,7 @@ function drawPlaces(tile, coords, places, opts) {
 
         let y = yc * N - coords.y, x = xc * N - coords.x
         if (y > -margin2 && y < 1+margin2 && x > -margin2 && x < 1+margin2) {
+
             let xS = size.x * x, yS = size.y * y
             ctx.strokeText(name, xS, yS, 70)
             ctx.fillText(name, xS, yS, 70)
