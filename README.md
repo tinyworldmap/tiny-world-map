@@ -32,7 +32,7 @@ This script embeds all data necessary to display the map.
 Then, instead of adding a tile layer to the Leaflet map, use:
 
 ```js
-new L.GridLayer.TinyWorld().addTo(map)
+new L.GridLayer.TinyWorld({maxZoom: 19}).addTo(map)
 ```
 
 The `TinyWorld` constructor accepts several options: `backgroundColor`, `textFillColor`, `borderStrokeColor`, `borderFillColor`, `borderWidth`, `textStrokeColor` (which helps separate the text from the rest), `textStrokeWidth`, `cityFont` (e.g. `"12px Arial"`), `countryFont`, and `dotColor`.
