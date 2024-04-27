@@ -24,6 +24,9 @@ function drawPlaces(tile, coords, places, opts) {
     if (!places.lakepath2ds)
         places.lakepath2ds = places.lakes.map(p => [new Path2D(p[0]), p[1]])
 
+    if (!places.statepath2ds)
+        places.statepath2ds = places.states.map(p => [new Path2D(p[0]), p[1]])
+
     let vwidth = 800, vheight = 800
 
     var size = {x: tile.width, y: tile.height};
@@ -36,7 +39,6 @@ function drawPlaces(tile, coords, places, opts) {
 
     ctx.translate(-size.x*coords.x, -size.x*coords.y)
     ctx.scale(size.x*N/vwidth,size.y*N/vheight)
-    ctx.strokeStyle = opts.borderColor || '#b4a6ae'
     ctx.fillStyle = opts.borderFillColor || '#fdf9f1'
     ctx.lineWidth = (opts.borderWidth||4)/N
     ctx.lineJoin = 'round'
@@ -49,8 +51,31 @@ function drawPlaces(tile, coords, places, opts) {
         }
     }
 
+    let statePathsToDraw = new Path2D()
+
+    if (coords.z > 3 && opts.stateColor != 'transparent') {
+        for (let [p, bounds] of places.statepath2ds) { // 60-100 fails
+            if (!(bounds[0] > rbound || bounds[2] < lbound || bounds[1] > bbound || bounds[3] < tbound)) {
+                statePathsToDraw.addPath(p)
+            }
+        }
+    }
+
     if (opts.borderFillColor != 'transparent')
         ctx.fill(pathsToDraw)
+
+    ctx.setLineDash([5/N, 5/N])
+    ctx.lineWidth = (opts.borderWidth||4)/N/2
+    ctx.strokeStyle = opts.stateColor || '#b4a6ae'
+
+    if (opts.stateStrokeColor != 'transparent')
+        ctx.stroke(statePathsToDraw)
+
+    ctx.setLineDash([])
+
+    ctx.lineWidth = (opts.borderWidth||4)/N
+    ctx.strokeStyle = opts.borderColor || '#b4a6ae'
+
     if (opts.borderStrokeColor != 'transparent')
         ctx.stroke(pathsToDraw)
 
