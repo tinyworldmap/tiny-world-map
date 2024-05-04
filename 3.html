@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Tiny World Map 3</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="tiny-world-map-3">Tiny World Map 3</h1>
+<p>A few weeks ago, we released the first version of <a
+href="/">tinyworldmap</a>, a world map for offline-first and
+low-bandwidth web apps, to a broader audience. It was originally
+developed as a backdrop. The goal was to give (offline) users a general
+idea where markers on the map were located. Because of this, we didn’t
+care much for details.</p>
+<p>In the days after the release, people gently reminded us that both
+the Caspian Sea and the Great Lakes were shown as land, that many
+islands were missing, that half of our (not their, our) home country
+looked like it was about to drift into sea, and that some UK towns were
+already underwater.</p>
+<p>In tinyworldmap’s third release, this has all been fixed. Scroll
+horizontally to see the old versions:</p>
+<style>img {border: 1px solid black;}</style>
+<div style="overflow-x: scroll;">
+<div style="width: 950px;">
+<img src="images/3/nl-nice.png"> <img src="images/3/nl-bad.png">
+</div>
+<div style="width: 950px;">
+<img src="images/3/great-lakes-good.png">
+<img src="images/3/great-lakes-bad.png">
+</div>
+</div>
+</div>
+<h2 id="stealing-vertices-from-fjords">Stealing Vertices From
+Fjords</h2>
+<p>Although the additional detail has resulted in a slightly bigger file
+(~450K gzipped), most of the vertices were obtained by smoothing
+less-populated areas with complex shorelines, which we worked hard on to
+give an appearance that doesn’t feel out of place.</p>
+<h2 id="altering-the-map-appearance">Altering the Map Appearance</h2>
+<p>You can now do this:</p>
+<div id="map"
+style="width: 100%; height: 400px; font-size: 12px !important;">
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+<script src="dist/beta/tiny-world-all-10000.js"></script>
+<script>
+var map = L.map(
+  "map",
+  {
+      center: [40.0, 15.0],
+      crs: L.CRS.EPSG3857,
+      zoom: 3,
+      zoomControl: false,
+      preferCanvas: true,
+      worldCopyJump: true,
+  }
+);
+L.control.scale().addTo(map);
+</script>
+<script>
+let img = Object.assign(new Image(), {src: 'images/3/sea+water.png'})
+let img2 = Object.assign(new Image(), {src: 'images/3/gray+stone.png'})
+let loaded = 0
+
+img.onload = img2.onload = () => {
+    if (++loaded != 2)
+        return
+    let render = {
+        background: {
+            style: {fillStyle: ctx => ctx.createPattern(img, 'repeat')}
+        },
+        lakes: {
+            style: {fillStyle: ctx => ctx.createPattern(img, 'repeat'), strokeStyle: 'black'}
+        },
+        country_borders: {
+            style: {
+                // fillStyle: '#cbf078',
+                fillStyle: ctx => ctx.createPattern(img2, 'repeat'),
+                strokeStyle: 'black',
+                lineWidth: 1,
+                shadowBlur: 15,
+                shadowColor: 'rgba(0,0,0,.3)'
+            },
+        },
+        state_borders: {
+            style: {
+                fillStyle: 'transparent',
+                strokeStyle: 'black',
+                lineWidth: 0.5
+            },
+            options: {minZoom: 4}
+        },
+        country_labels: {
+            style: {
+                font: 'bold 14px monospace',
+                strokeStyle: 'rgba(255,255,255,.9)',
+                fillStyle: 'black',
+                lineWidth: 3,
+            },
+            options: {
+                maxWidth: 100
+            }
+        },
+        city_labels: {
+            style: {
+                font: '12px monospace',
+                strokeStyle: 'rgba(255,255,255,.7)',
+                fillStyle: 'black',
+                lineWidth: 3,
+            },
+            options: {
+                maxWidth: 100
+            }
+        }
+    }
+
+    new L.GridLayer.TinyWorld({maxZoom: 19, render}).addTo(map)
+}
+</script>
+<p>For every map layer, any <a
+href="https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D">property</a>
+can be set on the canvas rendering context. More info in the <a
+href="https://github.com/tinyworldmap/tiny-world-map?tab=readme-ov-file#altering-the-map-appearance">documentation</a>.
+Of course, because the map is rendered client-side, excessive use of
+shadows, filters and textures will slow down older devices.</p>
+<h2 id="a-note-on-custom-content-maps">A Note On Custom-Content
+Maps</h2>
+<p>A lot of private individuals have contacted us asking us how to
+create custom-content maps themselves. Road maps, city maps, detail
+maps, translated maps, you name it. Every time, we’ve had to disappoint
+them. Custom map-making is our core business. We’d like to open-source
+our tooling, but at the moment, our business depends on some trade
+secrets, and it’s our business that finances our tinyworldmap releases
+under the Open Database License.</p>
+<p>Some people have suggested avenues for funding to open source our
+business and head into a non-profit direction, which we are open to. If
+you are interested in providing funding or if you know of an
+organization that might be, <a
+href="mailto:business@tinyworldmap.com?body=Hi%20Bob,">let us
+know</a>!</p>
+<p><br><br><br></p>
+<p><small>© Tinyworldmap</small></p>
+</body>
+</html>

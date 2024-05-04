@@ -35,12 +35,6 @@ Then, instead of adding a tile layer to the Leaflet map, use:
 new L.GridLayer.TinyWorld({maxZoom: 19}).addTo(map)
 ```
 
-The `TinyWorld` constructor accepts several options: `backgroundColor`, `textFillColor`, `borderStrokeColor`, `borderFillColor`, `borderWidth`, `textStrokeColor` (which helps separate the text from the rest), `textStrokeWidth`, `cityFont` (e.g. `"12px Arial"`), `countryFont`, and `dotColor`.
-
-If `dotColor` is specified, each city is marked with a dot. This enhances usability when using the stripped-down version of tinyworldmap that excludes country borders:
-
-<kbd><img src="images/noborders.png" /></kbd>
-
 The version currently in development is also available:
 
 ```html
@@ -65,6 +59,29 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 ```
 
 To see an example of a production application using tinyworldmap as a fallback, visit [Hitchmap](https://hitchmap.com). Simply load the website in a browser supporting service workers, wait for a while, turn off your internet, and reload. The web app should be functioning as normal, using the fallback map. Note that it might take a while for the service worker to install.
+
+## Altering the Map Appearance
+
+
+The constructor takes a `render` option, which alters the appearance of the map:
+
+<kbd><img src="images/maximalism.png" /></kbd>
+
+For every layer, the options in `style` are applied to the [rendering context](https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D). For reference, the default style can be found [here](dist/beta/styling-example.js), and the heavily styled version used in the tinyworldmap 3 [announcement](https://tinyworldmap.com/3) can be found [here](3.html#L229).
+
+```
+let render = {
+    state_borders: {
+        style: {fillStyle: '#f00'}
+    }
+}
+
+new L.GridLayer.TinyWorld({maxZoom: 19, render}).addTo(map)
+```
+
+## Custom maps
+
+Please contact us at [business@tinyworldmap.com](mailto:business@tinyworldmap.com?body=Hi%20Bob,) for a quote if your organization requires a road map, a city map, a map in another language, or another custom-content map featuring OSM or non-OSM data.
 
 ## Tinier world maps
 
@@ -93,10 +110,6 @@ Cities included | Population
 10,000 | > 48,000
 4,000 | > 137,000
 2,000 | > 287,000
-
-## Hire tinyworldmap
-
-If you require a customized map (e.g. in more detail or in another language) or if you need assistance implementing offline functionality on your website, please contact us at [business@tinyworldmap.com](mailto:business@tinyworldmap.com?body=Hi%20Bob,).
 
 ## Attribution
 
