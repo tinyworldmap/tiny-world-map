@@ -165,19 +165,18 @@
 </head>
 <body>
 <h1 id="tiny-world-map-3">Tiny World Map 3</h1>
-<p>A few weeks ago, we released the first version of <a
+<p>April 21 marked the first public release of <a
 href="/">tinyworldmap</a>, a world map for offline-first and
-low-bandwidth web apps, to a broader audience. It was originally
-developed as a backdrop. The goal was to give (offline) users a general
-idea where markers on the map were located. Because of this, we didn’t
-care much for details.</p>
-<p>In the days after the release, people gently reminded us that both
-the Caspian Sea and the Great Lakes were shown as land, that many
-islands were missing, that half of our (not their, our) home country
-looked like it was about to drift into sea, and that some UK towns were
-already underwater.</p>
+low-bandwidth web apps. It was originally developed as a backdrop. The
+goal was to give (offline) users a very broad idea where markers on a
+map were located. The reception was positive, and web developers clearly
+understood the value of the project. Still, people gently reminded us
+that both the Caspian Sea and the Great Lakes were shown as land, that
+many islands were missing, that half of our (not their, our) home
+country looked like it was about to drift into sea, and that some UK
+towns were already underwater.</p>
 <p>In tinyworldmap’s third release, this has all been fixed. Scroll
-horizontally to see the old versions:</p>
+horizontally to see the first version:</p>
 <style>img {border: 1px solid black;}</style>
 <div style="overflow-x: scroll;">
 <div style="width: 950px;">
@@ -193,8 +192,9 @@ horizontally to see the old versions:</p>
 Fjords</h2>
 <p>Although the additional detail has resulted in a slightly bigger file
 (~450K gzipped), most of the vertices were obtained by smoothing
-less-populated areas with complex shorelines, which we worked hard on to
-give an appearance that doesn’t feel out of place.</p>
+sparsely populated areas with complex shorelines. We dedicated
+considerable effort to ensure the smoothened shores blend into the
+overall appearance.</p>
 <h2 id="altering-the-map-appearance">Altering the Map Appearance</h2>
 <p>You can now do this:</p>
 <div id="map"
@@ -284,21 +284,9 @@ can be set on the canvas rendering context. More info in the <a
 href="https://github.com/tinyworldmap/tiny-world-map?tab=readme-ov-file#altering-the-map-appearance">documentation</a>.
 Of course, because the map is rendered client-side, excessive use of
 shadows, filters and textures will slow down older devices.</p>
-<h2 id="a-note-on-custom-content-maps">A Note On Custom-Content
-Maps</h2>
-<p>A lot of private individuals have contacted us asking us how to
-create custom-content maps themselves. Road maps, city maps, detail
-maps, translated maps, you name it. Every time, we’ve had to disappoint
-them. Custom map-making is our core business. We’d like to open-source
-our tooling, but at the moment, our business depends on some trade
-secrets, and it’s our business that finances our tinyworldmap releases
-under the Open Database License.</p>
-<p>Some people have suggested avenues for funding to open source our
-business and head into a non-profit direction, which we are open to. If
-you are interested in providing funding or if you know of an
-organization that might be, <a
-href="mailto:business@tinyworldmap.com?body=Hi%20Bob,">let us
-know</a>!</p>
+<!-- ## A Note On Custom-Content Maps -->
+<!-- A lot of private individuals have contacted us asking us how to create custom-content maps themselves. Road maps, city maps, detail maps, translated maps, you name it. Every time, we've had to disappoint them. Custom map-making is our core business. We'd like to open-source our tooling, but at the moment, our business depends on some trade secrets, and it's our business that finances our tinyworldmap releases under the Open Database License. -->
+<!-- Some people have suggested avenues for funding to open source our business and head into a non-profit direction, which we are open to. If you are interested in providing funding or if you know of an organization that might be, [let us know](mailto:business@tinyworldmap.com?body=Hi%20Bob,)! -->
 <p><br><br><br></p>
 <p><small>© Tinyworldmap</small></p>
 </body>
