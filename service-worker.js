@@ -47,7 +47,7 @@ function drawPlaces(tile, coords, twm, opts) {
         for (let k in render.style || {}) {
             newRestoreStyle[k] = ctx[k]
             delete restoreStyle[k]
-            ctx[k] = typeof render.style[k] == 'function' ? render.style[k](ctx, N, coords.x, coords.y) : render.style[k]
+            ctx[k] = typeof render.style[k] == 'function' ? render.style[k](ctx, coords) : render.style[k]
         }
 
         for (let k in restoreStyle) {

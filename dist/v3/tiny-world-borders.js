@@ -34,7 +34,7 @@
         for (let k in render.style || {}) {
             newRestoreStyle[k] = ctx[k]
             delete restoreStyle[k]
-            ctx[k] = typeof render.style[k] == 'function' ? render.style[k](ctx, N, coords.x, coords.y) : render.style[k]
+            ctx[k] = typeof render.style[k] == 'function' ? render.style[k](ctx, coords) : render.style[k]
         }
 
         for (let k in restoreStyle) {
@@ -298,11 +298,10 @@ let defaultStyling = {
         for (let source of sources) {
             for (let k in source) {
                 let vs = source[k], vt = target[k]
-                if (isObject(vs) && isObject(vt)) {
+                if (isObject(vs) && isObject(vt))
                     target[k] = deepAssign(vt, vs)
-                    continue
-                }
-                target[k] = source[k]
+                else
+                    target[k] = source[k]
             }
         }
         return target
