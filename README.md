@@ -62,7 +62,6 @@ To see an example of a production application using tinyworldmap as a fallback, 
 
 ## Altering the Map Appearance
 
-
 The constructor takes a `render` option, which alters the appearance of the map:
 
 <kbd><img src="images/maximalism.png" /></kbd>
@@ -89,7 +88,7 @@ The complete map is 450K gzipped/1.1M uncompressed. For certain use cases, this 
 
 ### No borders
 
-[`tiny-world-noborders-10000.js(on)`](dist/tiny-world-noborders-10000.js) contains all the data present in the complete version except for country borders and shorelines. This reduces the gzipped version by 300k and the uncompressed version by 825k.
+[`tiny-world-cities-10000.js(on)`](dist/v3/tiny-world-cities-10000.js) contains all the data present in the complete version except for state borders, country borders and shorelines. This reduces the gzipped version by 300k and the uncompressed version by 825k.
 
 In addition to its smaller size, the version without borders has the advantage that all data included is precise. The country borders in the complete version are not exact at high zoom levels, which can look strange when overlaying shapes that match country borders and shorelines. In such cases, the version without borders often looks better.
 
@@ -99,7 +98,7 @@ This is the default styling:
 
 ### No cities
 
-There are two versions available without city labels: `tiny-world-nocities.js(on)` (which retains country labels) and `tiny-world-borders.js(on)` (which omits country labels). The city labels comprise 410K uncompressed and 172K compressed.
+There are two versions available without city labels: `tiny-world-borders.js(on)` (which omits state borders) and `tiny-world-nocities.js(on)` (which retains state borders). The city labels comprise 410K uncompressed and 172K compressed.
 
 ### Fewer cities
 
