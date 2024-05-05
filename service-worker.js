@@ -1,7 +1,7 @@
 // Choose a cache name
 const cacheName = 'sw-v1';
 // IMPORTANT: List the files to precache
-const TWM = 'https://tinyworldmap.com/dist/v2/tiny-world-all-10000.json';
+const TWM = 'https://tinyworldmap.com/dist/v3/tiny-world-all-10000.json';
 const precacheResources = ['/', TWM];
 // IMPORTANT: Alter the regex and tile size if you use non-standard tiles
 const REGEXP = /tile\.openstreetmap\.org\/(?<z>\d+)\/(?<x>\d+)\/(?<y>\d+)/
