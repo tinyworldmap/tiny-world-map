@@ -299,7 +299,7 @@ let defaultStyling = {
             for (let k in source) {
                 let vs = source[k], vt = target[k]
                 if (isObject(vs) && isObject(vt))
-                    target[k] = deepAssign(vt, vs)
+                    target[k] = deepAssign({}, vt, vs)
                 else
                     target[k] = source[k]
             }
@@ -309,7 +309,6 @@ let defaultStyling = {
 
     L.GridLayer.TinyWorld = L.GridLayer.extend({
         createTile: function(xyz){
-            this.render = this.render || Object.assign({}, )
             // create a <canvas> element for drawing
             let tile = L.DomUtil.create('canvas', 'leaflet-tile');
 
@@ -317,6 +316,8 @@ let defaultStyling = {
             tile.setAttribute('width', tileSize.x);
             tile.setAttribute('height', tileSize.y);
 
+            console.log(this)
+            console.log(this.options.render)
             let render = deepAssign({}, defaultStyling, this.options.render || {})
 
             return drawPlaces(tile, xyz, {data: places, render: render}, this.options)

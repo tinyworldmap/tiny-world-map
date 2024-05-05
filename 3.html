@@ -165,7 +165,28 @@
 </head>
 <body>
 <h1 id="tiny-world-map-3">Tiny World Map 3</h1>
-<p><img src="images/zoomed-mid.png"></p>
+<div id="topmap"
+style="width: 100%; height: 400px; font-size: 12px !important;">
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+<script src="dist/beta/tiny-world-all-10000.js"></script>
+<script>
+var map2 = L.map(
+  "topmap",
+  {
+      center: [40.0, 15.0],
+      crs: L.CRS.EPSG3857,
+      zoom: 3,
+      zoomControl: false,
+      preferCanvas: true,
+      worldCopyJump: true,
+  }
+);
+L.control.scale().addTo(map2);
+new L.GridLayer.TinyWorld({maxZoom: 19}).addTo(map2)
+</script>
 <p>Two weeks ago, we released <a href="/">tinyworldmap</a>, a world map
 for offline-first and low-bandwidth web apps. It was originally
 developed as a simple offline fallback for OpenStreetMap tiles.</p>
@@ -173,15 +194,15 @@ developed as a simple offline fallback for OpenStreetMap tiles.</p>
 already using the map, the reception was very positive.</p>
 <h2 id="stealing-vertices-from-fjords">Stealing Vertices From
 Fjords</h2>
-<p>At the same time, it was clear that a less coarse map would be
-preferred. In the days following the release, people gently reminded us
-that both the Caspian Sea and the Great Lakes were shown as land, that
-many islands were missing, that half of our (not their, our) home
-country looked like it was about to drift into sea, and that some UK
-towns were already underwater.</p>
+<p>Still, it was clear that a less coarse map would be preferred. In the
+days following the release, people gently reminded us that both the
+Caspian Sea and the Great Lakes were shown as land, that many islands
+were missing, that half of our (not their, our) home country looked like
+it was about to drift into sea, and that some UK towns were already
+underwater.</p>
 <p>In tinyworldmap’s third release, this has all been fixed. Scroll
 horizontally to see the original version:</p>
-<style>img {border: 1px solid black;}</style>
+<style>img, #topmap {border: 1px solid black;}</style>
 <div style="overflow-x: scroll;">
 <div style="width: 950px;">
 <img src="images/3/nl-nice.png"> <img src="images/3/nl-bad.png">
@@ -203,9 +224,6 @@ map style.</p>
 style="width: 100%; height: 400px; font-size: 12px !important;">
 
 </div>
-<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
-<script src="dist/beta/tiny-world-all-10000.js"></script>
 <script>
 var map = L.map(
   "map",
@@ -219,8 +237,7 @@ var map = L.map(
   }
 );
 L.control.scale().addTo(map);
-</script>
-<script>
+
 let img = Object.assign(new Image(), {src: 'images/3/sea+water.png'})
 let img2 = Object.assign(new Image(), {src: 'images/3/gray+stone.png'})
 let loaded = 0
