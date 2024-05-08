@@ -10,7 +10,7 @@ tinyworldmap is designed to be used with Leaflet. All zoom levels are supported,
 
 By default, the map displays the 10,000 most populous cities added to OpenStreetMap. At the time of writing, this encompasses all cities and towns with a population of at least 48,000:
 
-<kbd><img src="images/zoomed-in-3.png" /></kbd>
+<kbd><img src="images/zoomed-in-la-coast.png" /></kbd>
 
 ## Usage
 
