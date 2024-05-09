@@ -82,6 +82,8 @@ new L.GridLayer.TinyWorld({maxZoom: 19, render}).addTo(map)
 
 Please contact us at [business@tinyworldmap.com](mailto:business@tinyworldmap.com?body=Hi%20Bob,) for a quote if your organization requires a road map, a city map, a map in another language, or another custom-content map featuring OSM or non-OSM data.
 
+<kbd><img src="images/roads.png" /></kbd>
+
 ## Tinier world maps
 
 The complete map is 450K gzipped/1.1M uncompressed. For certain use cases, this might still be too large.
